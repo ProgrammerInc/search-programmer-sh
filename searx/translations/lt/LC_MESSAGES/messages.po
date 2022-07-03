@@ -62,9 +62,9 @@ msgstr "paveikslai"
 msgid "videos"
 msgstr "vaizdo įrašai"
 
-#. CATEGORY_NAMES['IT']
+#. CATEGORY_NAMES['CODE']
 #: searx/searxng.msg
-msgid "it"
+msgid "code"
 msgstr "IT"
 
 #. CATEGORY_NAMES['NEWS']
@@ -367,7 +367,7 @@ msgid "Powered by"
 msgstr "Veikia su"
 
 #: searx/templates/simple/base.html:62
-msgid "a privacy-respecting, hackable metasearch engine"
+msgid "a privacy-respecting, metasearch engine for software developers"
 msgstr "gerbianti privatumą, programuojama metapaieškos sistema"
 
 #: searx/templates/simple/base.html:63

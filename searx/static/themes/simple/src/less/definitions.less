@@ -115,6 +115,33 @@
   --color-toolkit-loader-borderleft: rgba(255, 255, 255, 0);
   --color-doc-code: #300;
   --color-doc-code-background: #fdd;
+
+  h1 {
+    color: #000;
+  }
+
+  h1 .cursor {
+    animation: blink 1s step-end infinite;
+  }
+
+  .dark-icon {
+    display: none;
+  }
+
+  .light-icon {
+    display: block;
+  }
+
+  @keyframes blink {
+    0%,
+    to {
+      color: transparent;
+    }
+
+    50% {
+      color: #000;
+    }
+  }
 }
 
 .dark-themes() {
@@ -227,6 +254,33 @@
   --color-toolkit-loader-borderleft: rgba(0, 0, 0, 0);
   --color-doc-code: #fdd;
   --color-doc-code-background: #300;
+
+  h1 {
+    color: #fff;
+  }
+
+  h1 .cursor {
+    animation: blink-dark 1s step-end infinite;
+  }
+
+  .dark-icon {
+    display: block;
+  }
+
+  .light-icon {
+    display: none;
+  }
+
+  @keyframes blink-dark {
+    0%,
+    to {
+      color: transparent;
+    }
+
+    50% {
+      color: #fff;
+    }
+  }
 }
 
 /// Dark Theme (autoswitch based on device pref)

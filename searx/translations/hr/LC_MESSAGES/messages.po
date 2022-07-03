@@ -62,9 +62,9 @@ msgstr "slike"
 msgid "videos"
 msgstr "video zapisi"
 
-#. CATEGORY_NAMES['IT']
+#. CATEGORY_NAMES['CODE']
 #: searx/searxng.msg
-msgid "it"
+msgid "code"
 msgstr "it"
 
 #. CATEGORY_NAMES['NEWS']
@@ -365,7 +365,7 @@ msgid "Powered by"
 msgstr "Pokreće"
 
 #: searx/templates/simple/base.html:62
-msgid "a privacy-respecting, hackable metasearch engine"
+msgid "a privacy-respecting, metasearch engine for software developers"
 msgstr "meta-tražilica koja poštuje privatnost"
 
 #: searx/templates/simple/base.html:63

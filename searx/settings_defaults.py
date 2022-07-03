@@ -21,14 +21,14 @@ LANGUAGE_CODES = ['all'] + list(l[0] for l in languages)
 SIMPLE_STYLE = ('auto', 'light', 'dark')
 CATEGORIES_AS_TABS = {
     'general': {},
+    'code': {},
+    'science': {},
+    'news': {},
     'images': {},
     'videos': {},
-    'news': {},
-    'map': {},
     'music': {},
-    'it': {},
-    'science': {},
     'files': {},
+    'map': {},
     'social media': {},
 }
 STR_TO_BOOL = {

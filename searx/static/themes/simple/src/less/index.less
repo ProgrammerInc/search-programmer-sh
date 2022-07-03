@@ -1,3 +1,24 @@
+@font-face {
+  font-family: 'Fira Mono';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Fira Mono'), url('../../../fonts/FiraMono-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Fira Mono';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Fira Mono'), url('../../../fonts/FiraMono-Medium.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Fira Mono';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Fira Mono'), url('../../../fonts/FiraMono-Bold.woff') format('woff');
+}
+
 #main_index {
   margin-top: 26vh;
 }
@@ -6,16 +27,17 @@
   text-align: center;
 
   .title {
-    background: url('../img/searxng.png') no-repeat;
+    // background: url('../img/programmer.png') no-repeat;
     min-height: 4rem;
     margin: 4rem auto;
-    background-position: center;
-    background-size: contain;
+    // background-position: center;
+    // background-size: contain;
   }
 
   h1 {
+    font-family: Fira Mono, monospace;
     font-size: 4em;
-    visibility: hidden;
+    font-weight: 400;
   }
 
   #search,
@@ -41,7 +63,7 @@
 @media screen and (max-width: @tablet) {
   div.title {
     h1 {
-      font-size: 1em;
+      font-size: 2em;
     }
   }
 

@@ -17,7 +17,7 @@ about = {
     "results": 'JSON',
 }
 
-categories = ['it']  # optional
+categories = ['code']  # optional
 paging = True
 
 base_url = "https://hub.docker.com/"

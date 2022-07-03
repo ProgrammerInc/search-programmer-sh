@@ -59,9 +59,9 @@ msgstr "이미지"
 msgid "videos"
 msgstr "비디오"
 
-#. CATEGORY_NAMES['IT']
+#. CATEGORY_NAMES['CODE']
 #: searx/searxng.msg
-msgid "it"
+msgid "code"
 msgstr "IT"
 
 #. CATEGORY_NAMES['NEWS']
@@ -357,7 +357,7 @@ msgid "Powered by"
 msgstr "Powered by"
 
 #: searx/templates/simple/base.html:62
-msgid "a privacy-respecting, hackable metasearch engine"
+msgid "a privacy-respecting, metasearch engine for software developers"
 msgstr "개인 정보를 존중하는 맞춤형 메타 검색 엔진"
 
 #: searx/templates/simple/base.html:63

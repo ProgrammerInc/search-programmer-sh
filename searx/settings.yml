@@ -248,14 +248,14 @@ checker:
 
 categories_as_tabs:
   general:
+  code:
+  science:
+  news:
   images:
   videos:
-  news:
-  map:
   music:
-  it:
-  science:
   files:
+  map:
   social media:
 
 engines:
@@ -345,9 +345,9 @@ engines:
     url_xpath: //article[@class="repo-summary"]//a[@class="repo-link"]/@href
     title_xpath: //article[@class="repo-summary"]//a[@class="repo-link"]
     content_xpath: //article[@class="repo-summary"]/p
-    categories: [it, repos]
+    categories: [code, repos]
     timeout: 4.0
-    disabled: true
+    disabled: false
     shortcut: bb
     about:
       website: https://bitbucket.org/
@@ -489,7 +489,7 @@ engines:
   - name: docker hub
     engine: docker_hub
     shortcut: dh
-    categories: [it, packages]
+    categories: [code, packages]
 
   - name: erowid
     engine: xpath
@@ -597,7 +597,7 @@ engines:
   - name: free software directory
     engine: mediawiki
     shortcut: fsd
-    categories: [it, software wikis]
+    categories: [code, software wikis]
     base_url: https://directory.fsf.org/
     number_of_results: 5
     # what part of a page matches the query string: title, text, nearmatch
@@ -606,7 +606,7 @@ engines:
     # * nearmatch - nearmatch in title
     search_type: title
     timeout: 5.0
-    disabled: true
+    disabled: false
     about:
       website: https://directory.fsf.org/
       wikidata_id: Q2470288
@@ -648,10 +648,10 @@ engines:
     title_query: name_with_namespace
     content_query: description
     page_size: 20
-    categories: [it, repos]
+    categories: [code, repos]
     shortcut: gl
     timeout: 10.0
-    disabled: true
+    disabled: false
     about:
       website: https://about.gitlab.com/
       wikidata_id: Q16639197
@@ -674,9 +674,9 @@ engines:
     url_query: html_url
     title_query: name
     content_query: description
-    categories: [it, repos]
+    categories: [code, repos]
     shortcut: cb
-    disabled: true
+    disabled: false
     about:
       website: https://codeberg.org/
       wikidata_id:
@@ -689,7 +689,7 @@ engines:
     engine: google
     shortcut: go
     # see https://docs.searxng.org/src/searx.engines.google.html#module-searx.engines.google
-    use_mobile_ui: false
+    use_mobile_ui: true
     # additional_tests:
     #   android: *test_android
 
@@ -783,7 +783,7 @@ engines:
     url_xpath: //article[contains(@class, "post")]//a[@class="post__title_link"]/@href
     title_xpath: //article[contains(@class, "post")]//a[@class="post__title_link"]
     content_xpath: //article[contains(@class, "post")]//div[contains(@class, "post__text")]
-    categories: it
+    categories: code
     timeout: 4.0
     disabled: true
     shortcut: habr
@@ -804,7 +804,8 @@ engines:
     url_xpath: './/div[@class="ans"]//a/@href'
     content_xpath: './/div[@class="from"]'
     page_size: 20
-    categories: [it, packages]
+    categories: [code, packages]
+    disabled: false
     shortcut: ho
     about:
       website: https://hoogle.haskell.org/
@@ -893,7 +894,7 @@ engines:
     url_xpath: .//a[@class="u-url"]/@href
     title_xpath: .//a[@class="u-url"]
     content_xpath: .//a[@class="domain"]
-    categories: it
+    categories: code
     shortcut: lo
     timeout: 5.0
     disabled: true
@@ -959,8 +960,8 @@ engines:
     title_query: package/name
     content_query: package/description
     page_size: 25
-    categories: [it, packages]
-    disabled: true
+    categories: [code, packages]
+    disabled: false
     timeout: 5.0
     shortcut: npm
     about:
@@ -983,7 +984,7 @@ engines:
     url_query: url
     title_query: name
     content_query: description
-    categories: it
+    categories: code
     shortcut: man
     about:
       website: https://www.mankier.com/
@@ -1068,8 +1069,8 @@ engines:
     url_query: url
     title_query: name
     content_query: description
-    categories: [it, packages]
-    disabled: true
+    categories: [code, packages]
+    disabled: false
     timeout: 5.0
     shortcut: pack
     about:
@@ -1117,9 +1118,9 @@ engines:
     url_xpath: ./div/h3/a/@href
     title_xpath: ./div/h3/a
     content_xpath: ./p[@class="packages-description"]
-    categories: [packages, it]
+    categories: [code, packages]
     timeout: 3.0
-    disabled: true
+    disabled: false
     first_page_num: 1
     about:
       website: https://pub.dev/
@@ -1145,7 +1146,7 @@ engines:
     content_xpath: ./p
     suggestion_xpath: /html/body/main/div/div/div/form/div/div[@class="callout-block"]/p/span/a[@class="link"]
     first_page_num: 1
-    categories: [it, packages]
+    categories: [code, packages]
     about:
       website: https://pypi.org
       wikidata_id: Q2984686
@@ -1239,19 +1240,19 @@ engines:
     engine: stackexchange
     shortcut: st
     api_site: 'stackoverflow'
-    categories: [it, q&a]
+    categories: [code, q&a]
 
   - name: askubuntu
     engine: stackexchange
     shortcut: ubuntu
     api_site: 'askubuntu'
-    categories: [it, q&a]
+    categories: [code, q&a]
 
   - name: superuser
     engine: stackexchange
     shortcut: su
     api_site: 'superuser'
-    categories: [it, q&a]
+    categories: [code, q&a]
 
   - name: searchcode code
     engine: searchcode_code
@@ -1648,8 +1649,8 @@ engines:
     content_xpath: ./span/p
     suggestion_xpath: /html/body/main/div/div[@class="search__suggestions"]/p/a
     first_page_num: 1
-    categories: [it, packages]
-    disabled: true
+    categories: [code, packages]
+    disabled: false
     about:
       website: https://rubygems.org/
       wikidata_id: Q1853420

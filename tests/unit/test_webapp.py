@@ -93,7 +93,7 @@ class ViewsTestCase(SearxTestCase):
         result = self.app.post('/')
         self.assertEqual(result.status_code, 200)
         self.assertIn(
-            b'<div class="title"><h1>SearXNG</h1></div>',
+            b'<div class="title"><h1>&lt;programmer&gt;.<i class="cursor">_</i></h1></div>',
             result.data,
         )
 
@@ -110,7 +110,7 @@ class ViewsTestCase(SearxTestCase):
     def test_search_empty_html(self):
         result = self.app.post('/search', data={'q': ''})
         self.assertEqual(result.status_code, 200)
-        self.assertIn(b'<div class="title"><h1>SearXNG</h1></div>', result.data)
+        self.assertIn(b'<div class="title"><h1>&lt;programmer&gt;.<i class="cursor">_</i></h1></div>', result.data)
 
     def test_search_empty_json(self):
         result = self.app.post('/search', data={'q': '', 'format': 'json'})

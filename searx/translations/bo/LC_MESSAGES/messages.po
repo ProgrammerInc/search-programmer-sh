@@ -61,9 +61,9 @@ msgstr "པར་རིས།"
 msgid "videos"
 msgstr "བརྙན་ཟློས།"
 
-#. CATEGORY_NAMES['IT']
+#. CATEGORY_NAMES['CODE']
 #: searx/searxng.msg
-msgid "it"
+msgid "code"
 msgstr "ཆ་འཕྲིན་ལག་རྩལ།"
 
 #. CATEGORY_NAMES['NEWS']
@@ -361,7 +361,7 @@ msgid "Powered by"
 msgstr "བཟོ་སྐུན་པ་ནི"
 
 #: searx/templates/simple/base.html:62
-msgid "a privacy-respecting, hackable metasearch engine"
+msgid "a privacy-respecting, metasearch engine for software developers"
 msgstr "མི་སྒེར་ཆ་འཕྲིན་ལ་བརྩི་གསོག་ལྡན་ཞིང་འཚོལ་བྱེད་ནང་དོན་ཕུན་སུམ་པའི་འཚོལ་བཤེར་སྒུལ་བྱེད་མ་ལག"
 
 #: searx/templates/simple/base.html:63

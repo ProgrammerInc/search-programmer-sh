@@ -28,7 +28,6 @@ module.exports = function (grunt) {
           'uglify',
           'less',
           'image',
-          'svg2png',
           'svg2jinja'
         ]
       }
@@ -159,14 +158,6 @@ module.exports = function (grunt) {
         }
       },
     },
-    svg2png: {
-      favicon: {
-        files: {
-          'img/favicon.png': '<%= _brand %>/searxng-wordmark.svg',
-          'img/searxng.png': '<%= _brand %>/searxng.svg',
-        }
-      }
-    },
     svg2jinja: {
       all: {
         src: {
@@ -185,6 +176,7 @@ module.exports = function (grunt) {
           'newspaper-outline': 'node_modules/ionicons/dist/svg/newspaper-outline.svg',
           'location-outline': 'node_modules/ionicons/dist/svg/location-outline.svg',
           'musical-notes-outline': 'node_modules/ionicons/dist/svg/musical-notes-outline.svg',
+          'code-slash-outline': 'node_modules/ionicons/dist/svg/code-slash-outline.svg',
           'layers-outline': 'node_modules/ionicons/dist/svg/layers-outline.svg',
           'school-outline': 'node_modules/ionicons/dist/svg/school-outline.svg',
           'file-tray-full-outline': 'node_modules/ionicons/dist/svg/file-tray-full-outline.svg',
@@ -301,7 +293,6 @@ module.exports = function (grunt) {
     'uglify',
     'less',
     'image',
-    'svg2png',
     'svg2jinja',
   ]);
 };

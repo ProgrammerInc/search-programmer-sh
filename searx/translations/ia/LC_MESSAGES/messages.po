@@ -60,9 +60,9 @@ msgstr "imagines"
 msgid "videos"
 msgstr "videos"
 
-#. CATEGORY_NAMES['IT']
+#. CATEGORY_NAMES['CODE']
 #: searx/searxng.msg
-msgid "it"
+msgid "code"
 msgstr "software"
 
 #. CATEGORY_NAMES['NEWS']
@@ -366,7 +366,7 @@ msgid "Powered by"
 msgstr "Actionate per"
 
 #: searx/templates/simple/base.html:62
-msgid "a privacy-respecting, hackable metasearch engine"
+msgid "a privacy-respecting, metasearch engine for software developers"
 msgstr ""
 "un motor de meta-recerca, capabile de reprogrammation e respectuose al "
 "confidentialitate"

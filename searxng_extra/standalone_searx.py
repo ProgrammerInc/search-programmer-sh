@@ -15,7 +15,7 @@ Getting categories without initiate the engine will only return `['general']`
 >>> import searx.search
 ... searx.search.initialize()
 ... list(searx.engines.categories.keys())
-['general', 'it', 'science', 'images', 'news', 'videos', 'music', 'files', 'social media', 'map']
+['general', 'code', 'science', 'images', 'news', 'videos', 'music', 'files', 'social media', 'map']
 
 Example to use this script:
 

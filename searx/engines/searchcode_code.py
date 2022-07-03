@@ -17,7 +17,7 @@ about = {
 }
 
 # engine dependent config
-categories = ['it']
+categories = ['code']
 paging = True
 
 # search-url

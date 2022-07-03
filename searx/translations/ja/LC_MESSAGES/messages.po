@@ -68,9 +68,9 @@ msgstr "画像"
 msgid "videos"
 msgstr "動画"
 
-#. CATEGORY_NAMES['IT']
+#. CATEGORY_NAMES['CODE']
 #: searx/searxng.msg
-msgid "it"
+msgid "code"
 msgstr "情報技術"
 
 #. CATEGORY_NAMES['NEWS']
@@ -368,7 +368,7 @@ msgid "Powered by"
 msgstr "Powered by"
 
 #: searx/templates/simple/base.html:62
-msgid "a privacy-respecting, hackable metasearch engine"
+msgid "a privacy-respecting, metasearch engine for software developers"
 msgstr "プライバシー保護を重視した、ハッカブルなメタ検索エンジン"
 
 #: searx/templates/simple/base.html:63

@@ -63,9 +63,9 @@ msgstr "irudiak"
 msgid "videos"
 msgstr "bideoak"
 
-#. CATEGORY_NAMES['IT']
+#. CATEGORY_NAMES['CODE']
 #: searx/searxng.msg
-msgid "it"
+msgid "code"
 msgstr "informatika"
 
 #. CATEGORY_NAMES['NEWS']
@@ -368,7 +368,7 @@ msgid "Powered by"
 msgstr "Honek bultzatua"
 
 #: searx/templates/simple/base.html:62
-msgid "a privacy-respecting, hackable metasearch engine"
+msgid "a privacy-respecting, metasearch engine for software developers"
 msgstr "pribatutasun-errespetatzaile, metabilaketa motor hackeagarri bat"
 
 #: searx/templates/simple/base.html:63

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
   <ShortName>{{ instance_name }}</ShortName>
-  <Description>a privacy-respecting, hackable metasearch engine</Description>
+  <Description>a privacy-respecting, metasearch engine for software developers</Description>
   <InputEncoding>UTF-8</InputEncoding>
   <Image>{{ url_for('static', filename='img/favicon.png', _external=True) }}</Image>
   <LongName>searx metasearch</LongName>

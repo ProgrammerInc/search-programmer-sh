@@ -65,9 +65,9 @@ msgstr "படங்கள்"
 msgid "videos"
 msgstr "காணொளிகள்"
 
-#. CATEGORY_NAMES['IT']
+#. CATEGORY_NAMES['CODE']
 #: searx/searxng.msg
-msgid "it"
+msgid "code"
 msgstr "அது"
 
 #. CATEGORY_NAMES['NEWS']
@@ -374,7 +374,7 @@ msgid "Powered by"
 msgstr "மூலம் இயக்கப்படுகிறது"
 
 #: searx/templates/simple/base.html:62
-msgid "a privacy-respecting, hackable metasearch engine"
+msgid "a privacy-respecting, metasearch engine for software developers"
 msgstr "உங்கள் அகவுரிமையை மதிக்கும் மாற்றியமைக்ககூடிய ஒரு தேடல் எந்திரம்"
 
 #: searx/templates/simple/base.html:63

@@ -26,7 +26,7 @@ CATEGORY_NAMES = {
     'SOCIAL_MEDIA': 'social media',
     'IMAGES': 'images',
     'VIDEOS': 'videos',
-    'IT': 'it',
+    'CODE': 'code',
     'NEWS': 'news',
     'MAP': 'map',
     'ONIONS': 'onions',
