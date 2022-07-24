@@ -46,6 +46,8 @@ def post_search(request, search):
 
     answer = ''
 
+    # Source: https://docs.python.org/3/library/base64.html
+
     # encode base16 string
     if function == 'base16' or function == 'b16e':
         string_bytes = string.encode('utf-8')

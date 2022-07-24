@@ -46,12 +46,14 @@ def post_search(request, search):
     answer = ''
 
     # format camelcase string
+    # Source: https://www.30secondsofcode.org/python/s/camel
     if function == 'camel' or function == 'camelcase':
         new_string = re.sub(r"(_|-)+", " ", string).title().replace(" ", "")
         camelcased_string = ''.join([new_string[0].lower(), new_string[1:]])
         answer = gettext('Camelcased string') + ": " + camelcased_string
 
     # format kebabcase string
+    # Source: https://www.30secondsofcode.org/python/s/kebab
     if function == 'kebab' or function == 'kebabcase':
         kebabcased_string = '-'.join(
             re.sub(r"(\s|_|-)+"," ",
@@ -66,11 +68,13 @@ def post_search(request, search):
         answer = gettext('Lowercased string') + ": " + lowercased_string
 
     # format pascalcase string
+    # Source: https://www.geeksforgeeks.org/python-convert-snake-case-to-pascal-case/
     if function == 'pascal' or function == 'pascalcase':
         pascalcased_string = string.replace("_", " ").title().replace(" ", "")
         answer = gettext('Pascalcased string') + ": " + pascalcased_string
     
     # format snakecase string
+    # Source: https://www.30secondsofcode.org/python/s/snake
     if function == 'snake' or function == 'snakecase':
         snakecased_string = '_'.join(
             re.sub('([A-Z][a-z]+)', r' \1',
