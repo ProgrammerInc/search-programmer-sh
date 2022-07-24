@@ -18,17 +18,17 @@ along with searx. If not, see < http://www.gnu.org/licenses/ >.
 '''
 
 from flask_babel import gettext
-import hashlib
+import socket
 import re
 
-name = "Hash plugin"
-description = gettext("Converts strings to different hash digests.")
+name = "Hostname plugin"
+description = gettext("Displays the hostname for a given IP address.")
 default_on = True
 preference_section = 'query'
-query_keywords = ['md5', 'sha1', 'sha224', 'sha256', 'sha384', 'sha512']
-query_examples = 'sha512 The quick brown fox jumps over the lazy dog'
+query_keywords = ['hostname', 'ip2hostname']
+query_examples = 'hostname 8.8.8.8'
 
-parser_re = re.compile('(md5|sha1|sha224|sha256|sha384|sha512) (.*)', re.I)
+parser_re = re.compile('(hostname|ip2hostname) (.*)', re.I)
 
 def post_search(request, search):
     # process only on first page
@@ -44,14 +44,15 @@ def post_search(request, search):
         # end if the string is empty
         return True
 
-    # select hash function
-    f = hashlib.new(function.lower())
+    answer = ''
 
-    # make digest from the given string
-    f.update(string.encode('utf-8').strip())
-    answer = function.upper() + " " + gettext('hash digest') + ": " + f.hexdigest()
+    # convert hex to rgb
+    # Source: https://www.30secondsofcode.org/python/s/hex-to-rgb
+    if function == 'hostname' or function == 'ip2hostname':
+        hostname = socket.gethostbyaddr(string)[0]
+        answer = "\n" + gettext('Hostname') + ": " + hostname
 
     # print result
     search.result_container.answers.clear()
-    search.result_container.answers['hash'] = {'answer': answer}
+    search.result_container.answers['hostname'] = {'answer': answer}
     return True

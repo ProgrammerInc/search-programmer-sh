@@ -29,7 +29,6 @@ query_examples = 'hex2rgb #FFA501'
 
 parser_re = re.compile('(hex2rgb|rgb2hex) (.*)', re.I)
 
-
 def post_search(request, search):
     # process only on first page
     if search.search_query.pageno > 1:
