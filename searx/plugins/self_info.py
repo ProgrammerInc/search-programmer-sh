@@ -22,7 +22,7 @@ description = gettext('Displays your IP if the query is "ip" and your user agent
 default_on = True
 preference_section = 'query'
 query_keywords = ['user-agent']
-query_examples = ''
+query_examples = 'user-agent'
 
 # Self User Agent regex
 p = re.compile('.*user[ -]agent.*', re.IGNORECASE)

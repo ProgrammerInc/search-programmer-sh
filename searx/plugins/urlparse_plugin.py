@@ -18,17 +18,19 @@ along with searx. If not, see < http://www.gnu.org/licenses/ >.
 '''
 
 from flask_babel import gettext
+import urllib.parse
 import re
 
-name = "Hex to RGB plugin"
-description = gettext("Converts Hex to RGB and RGB to Hex.")
+name = "URL Parse plugin"
+description = gettext("URL encode strings and decodes URL encoded strings.")
 default_on = True
 preference_section = 'query'
-query_keywords = ['hex2rgb', 'rgb2hex']
-query_examples = 'hex2rgb #FFA501'
+query_keywords = ['urlencode', 'urldecode']
+query_examples = 'urldecode Hell%C3%B6+W%C3%B6rld%40Python'
 
-parser_re = re.compile('(hex2rgb|rgb2hex) (.*)', re.I)
+parser_re = re.compile('(urlencode|urldecode) (.*)', re.I)
 
+# Source: https://www.urlencoder.io/python/
 
 def post_search(request, search):
     # process only on first page
@@ -46,28 +48,17 @@ def post_search(request, search):
 
     answer = ''
 
-    # convert hex to rgb
-    # Source: https://www.30secondsofcode.org/python/s/hex-to-rgb
-    if function == 'hex2rgb':
-        new_string = string.strip("#")
-        if len(new_string) > 6 or not int(new_string, 16):
-            return True
-        hex_to_rgb = tuple(int(new_string[i:i+2], 16) for i in (0, 2, 4))
-        answer = gettext('Hex to RGB') + ": (" + ', '.join(map(str, hex_to_rgb)) + ")"
+    # URL encode string
+    if function == 'urlencode':
+        encoded_string = urllib.parse.quote(string)
+        answer = gettext('URL encoded string') + ": " + encoded_string
     
-    # convert rgb to hex
-    # Source: https://www.30secondsofcode.org/python/s/rgb-to-hex
-    if function == 'rgb2hex':
-        rgb_values = []
-        for value in string.strip("() ").split(',')[0:3]:
-            try:
-                rgb_values.append(int(value))
-            except ValueError:
-                return True
-        rgb_to_hex = ('{:02X}' * 3).format(*rgb_values)
-        answer = gettext('RGB to Hex') + ": #" + rgb_to_hex
+    # Decode URL encoded string
+    if function == 'urldecode':
+        decoded_string = urllib.parse.unquote(string)
+        answer = gettext('Decoded URL encoded string') + ": " + decoded_string
 
     # print result
     search.result_container.answers.clear()
-    search.result_container.answers['hex2rgb'] = {'answer': answer}
+    search.result_container.answers['urlparse'] = {'answer': answer}
     return True

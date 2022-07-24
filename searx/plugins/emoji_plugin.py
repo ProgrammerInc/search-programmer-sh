@@ -18,23 +18,25 @@ along with searx. If not, see < http://www.gnu.org/licenses/ >.
 '''
 
 from flask_babel import gettext
+import emoji
 import re
 
-name = "Hex to RGB plugin"
-description = gettext("Converts Hex to RGB and RGB to Hex.")
+name = "Emoji plugin"
+description = gettext("Display emojis from strings and demojize strings with emojis.")
 default_on = True
 preference_section = 'query'
-query_keywords = ['hex2rgb', 'rgb2hex']
-query_examples = 'hex2rgb #FFA501'
+query_keywords = ['emoji', 'emojize', 'demoji', 'demojize']
+query_examples = 'emojize Python :snake: is :thumbs_up:'
 
-parser_re = re.compile('(hex2rgb|rgb2hex) (.*)', re.I)
-
+parser_re = re.compile('(emoji|emojize|demoji|demojize) (.*)', re.I)
 
 def post_search(request, search):
     # process only on first page
     if search.search_query.pageno > 1:
         return True
+    
     m = parser_re.match(search.search_query.query)
+
     if not m:
         # wrong query
         return True
@@ -46,28 +48,17 @@ def post_search(request, search):
 
     answer = ''
 
-    # convert hex to rgb
-    # Source: https://www.30secondsofcode.org/python/s/hex-to-rgb
-    if function == 'hex2rgb':
-        new_string = string.strip("#")
-        if len(new_string) > 6 or not int(new_string, 16):
-            return True
-        hex_to_rgb = tuple(int(new_string[i:i+2], 16) for i in (0, 2, 4))
-        answer = gettext('Hex to RGB') + ": (" + ', '.join(map(str, hex_to_rgb)) + ")"
-    
-    # convert rgb to hex
-    # Source: https://www.30secondsofcode.org/python/s/rgb-to-hex
-    if function == 'rgb2hex':
-        rgb_values = []
-        for value in string.strip("() ").split(',')[0:3]:
-            try:
-                rgb_values.append(int(value))
-            except ValueError:
-                return True
-        rgb_to_hex = ('{:02X}' * 3).format(*rgb_values)
-        answer = gettext('RGB to Hex') + ": #" + rgb_to_hex
+    # display emojized string
+    if function == 'emoji' or function == 'emojize':
+        emoji_string = emoji.emojize(string, language='alias')
+        answer = gettext('Emojized string') + ": " + emoji_string
+
+    # display demojize string
+    if function == 'demoji' or function == 'demojize':
+        demoji_string = emoji.demojize(string)
+        answer = gettext('Demojized string') + ": " + demoji_string
 
     # print result
     search.result_container.answers.clear()
-    search.result_container.answers['hex2rgb'] = {'answer': answer}
+    search.result_container.answers['emoji'] = {'answer': answer}
     return True
