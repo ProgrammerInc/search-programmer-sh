@@ -51,70 +51,70 @@ def post_search(request, search):
         string_bytes = string.encode('utf-8')
         base16_bytes = base64.b16encode(string_bytes)
         base16_string = base16_bytes.decode('utf-8')
-        answer = gettext('base16 encoded string') + ": " + base16_string
+        answer = gettext('Base16 encoded string') + ": " + base16_string
     
     # decode base16 string
     if function == 'base16decode' or function == 'b16d':
         string_bytes = string.encode('utf-8')
         base16_bytes = base64.b16decode(string_bytes)
         base16_string = base16_bytes.decode('utf-8')
-        answer = gettext('base16 decoded string') + ": " + base16_string
+        answer = gettext('Base16 decoded string') + ": " + base16_string
 
     # encode base32 string
     if function == 'base32' or function == 'b32e':
         string_bytes = string.encode('utf-8')
         base32_bytes = base64.b32encode(string_bytes)
         base32_string = base32_bytes.decode('utf-8')
-        answer = gettext('base32 encoded string') + ": " + base32_string
+        answer = gettext('Base32 encoded string') + ": " + base32_string
     
     # decode base32 string
     if function == 'base32decode' or function == 'b32d':
         string_bytes = string.encode('utf-8')
         base32_bytes = base64.b32decode(string_bytes)
         base32_string = base64_bytes.decode('utf-8')
-        answer = gettext('base32 decoded string') + ": " + base32_string
+        answer = gettext('Base32 decoded string') + ": " + base32_string
 
     # encode base64 string
     if function == 'base64' or function == 'b64e':
         string_bytes = string.encode('utf-8')
         base64_bytes = base64.b64encode(string_bytes)
         base64_string = base64_bytes.decode('utf-8')
-        answer = gettext('base64 encoded string') + ": " + base64_string
+        answer = gettext('Base64 encoded string') + ": " + base64_string
     
     # decode base64 string
     if function == 'base64decode' or function == 'b64d':
         string_bytes = string.encode('utf-8')
         base64_bytes = base64.b64decode(string_bytes)
         base64_string = base64_bytes.decode('utf-8')
-        answer = gettext('base64 decoded string') + ": " + base64_string
+        answer = gettext('Base64 decoded string') + ": " + base64_string
 
     # encode base85 string
     if function == 'base85' or function == 'b85e':
         string_bytes = string.encode('utf-8')
         base85_bytes = base64.b85encode(string_bytes)
         base85_string = base85_bytes.decode('utf-8')
-        answer = gettext('base85 encoded string') + ": " + base85_string
+        answer = gettext('Base85 encoded string') + ": " + base85_string
     
     # decode base85 string
     if function == 'base85decode' or function == 'b64d':
         string_bytes = string.encode('utf-8')
         base85_bytes = base64.b85decode(string_bytes)
         base85_string = base85_bytes.decode('utf-8')
-        answer = gettext('base85 decoded string') + ": " + base85_string
+        answer = gettext('Base85 decoded string') + ": " + base85_string
 
     # encode ascii85 string
     if function == 'ascii85' or function == 'a85e':
         string_bytes = string.encode('utf-8')
         ascii85_bytes = base64.a85encode(string_bytes)
         ascii85_string = ascii85_bytes.decode('utf-8')
-        answer = gettext('ascii85 encoded string') + ": " + ascii85_string
+        answer = gettext('Ascii85 encoded string') + ": " + ascii85_string
     
     # decode ascii85 string
     if function == 'ascii85decode' or function == 'a64d':
         string_bytes = string.encode('utf-8')
         ascii85_bytes = base64.a85decode(string_bytes)
         ascii85_string = ascii85_bytes.decode('utf-8')
-        answer = gettext('ascii85 decoded string') + ": " + ascii85_string
+        answer = gettext('Ascii85 decoded string') + ": " + ascii85_string
 
     # print result
     search.result_container.answers.clear()

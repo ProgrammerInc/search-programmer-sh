@@ -14,6 +14,7 @@ along with searx. If not, see < http://www.gnu.org/licenses/ >.
 
 (C) 2015 by Adam Tauber, <asciimoo@gmail.com>
 (C) 2018, 2020 by Vaclav Zouzalik
+(C) 2022 by Programmer Inc.
 '''
 
 from flask_babel import gettext
@@ -49,7 +50,7 @@ def post_search(request, search):
 
     # make digest from the given string
     f.update(string.encode('utf-8').strip())
-    answer = function + " " + gettext('hash digest') + ": " + f.hexdigest()
+    answer = function.upper() + " " + gettext('hash digest') + ": " + f.hexdigest()
 
     # print result
     search.result_container.answers.clear()

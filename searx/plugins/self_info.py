@@ -34,14 +34,14 @@ p = re.compile('.*user[ -]agent.*', re.IGNORECASE)
 def post_search(request, search):
     if search.search_query.pageno > 1:
         return True
-    if search.search_query.query == 'ip':
-        x_forwarded_for = request.headers.getlist("X-Forwarded-For")
-        if x_forwarded_for:
-            ip = x_forwarded_for[0]
-        else:
-            ip = request.remote_addr
-        search.result_container.answers['ip'] = {'answer': ip}
-    elif p.match(search.search_query.query):
+    # if search.search_query.query == 'ip':
+    #     x_forwarded_for = request.headers.getlist("X-Forwarded-For")
+    #     if x_forwarded_for:
+    #         ip = x_forwarded_for[0]
+    #     else:
+    #         ip = request.remote_addr
+    #     search.result_container.answers['ip'] = {'answer': ip}
+    if p.match(search.search_query.query):
         ua = request.user_agent
         search.result_container.answers['user-agent'] = {'answer': ua}
     return True
