@@ -1,0 +1,71 @@
+'''
+searx is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+searx is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with searx. If not, see < http://www.gnu.org/licenses/ >.
+
+(C) 2015 by Adam Tauber, <asciimoo@gmail.com>
+(C) 2018, 2020 by Vaclav Zouzalik
+(C) 2022 by Programmer Inc.
+'''
+
+from flask_babel import gettext
+import re
+
+name = "Format plugin"
+description = gettext("Formats strings to a specific case.")
+default_on = True
+preference_section = 'query'
+query_keywords = ['lowercase', 'swapcase', 'titlecase', 'uppercase', 'lower', 'swap', 'title', 'upper']
+query_examples = 'uppercase The quick brown fox jumps over the lazy dog'
+
+parser_re = re.compile('(lowercase|swapcase|titlecase|uppercase|lower|swap|title|upper) (.*)', re.I)
+
+def post_search(request, search):
+    # process only on first page
+    if search.search_query.pageno > 1:
+        return True
+    m = parser_re.match(search.search_query.query)
+    if not m:
+        # wrong query
+        return True
+
+    function, string = m.groups()
+    if string.strip().__len__() == 0:
+        # end if the string is empty
+        return True
+
+    answer = ''
+
+    # format lowercase string
+    if function == 'lower' or function == 'lowercase':
+        lowercased_string = string.lower()
+        answer = gettext('lowercased string') + ": " + lowercased_string
+    
+    # format swapcase string
+    if function == 'swap' or function == 'swapcase':
+        swapcased_string = string.swapcase()
+        answer = gettext('swapcased string') + ": " + swapcased_string
+
+    # format titlecase string
+    if function == 'title' or function == 'titlecase':
+        titlecased_string = string.title()
+        answer = gettext('titlecased string') + ": " + titlecased_string
+
+    # format uppercase string
+    if function == 'upper' or function == 'uppercase':
+        uppercased_string = string.upper()
+        answer = gettext('uppercased string') + ": " + uppercased_string
+
+    # print result
+    search.result_container.answers.clear()
+    search.result_container.answers['format'] = {'answer': answer}
+    return True

@@ -26,7 +26,7 @@ description = gettext("Encodes/Decodes strings in Base16/Base32/Base64/Base85/As
 default_on = True
 preference_section = 'query'
 query_keywords = ['base16', 'base16decode', 'b16e', 'b16d', 'base32', 'base32decode', 'b32e', 'b32d', 'base64', 'base64decode', 'b64e', 'b64d', 'base85', 'base85decode', 'b85e', 'b85d', 'ascii85', 'ascii85decode', 'a85e', 'a85d']
-query_examples = 'b64e The quick brown fox jumps over the lazy dog'
+query_examples = 'base64 The quick brown fox jumps over the lazy dog'
 
 parser_re = re.compile('(base16|base16decode|b16e|b16d|base32|base32decode|b32e|b32d|base64|base64decode|b64e|b64d|base85|base85decode|b85e|b85d|ascii85|ascii85decode|a85e|a85d) (.*)', re.I)
 
