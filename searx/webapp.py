@@ -394,6 +394,7 @@ def get_client_settings():
         'autocomplete_min': get_setting('search.autocomplete_min'),
         'http_method': req_pref.get_value('method'),
         'infinite_scroll': req_pref.get_value('infinite_scroll'),
+        'offline_browsing': req_pref.get_value('offline_browsing'),
         'translations': get_translations(),
         'search_on_category_select': req_pref.plugins.choices['searx.plugins.search_on_category_select'],
         'hotkeys': req_pref.plugins.choices['searx.plugins.vim_hotkeys'],
@@ -425,6 +426,7 @@ def render(template_name: str, **kwargs):
     kwargs['results_on_new_tab'] = request.preferences.get_value('results_on_new_tab')
     kwargs['advanced_search'] = request.preferences.get_value('advanced_search')
     kwargs['query_in_title'] = request.preferences.get_value('query_in_title')
+    kwargs['offline_browsing'] = request.preferences.get_value('offline_browsing')
     kwargs['safesearch'] = str(request.preferences.get_value('safesearch'))
     kwargs['theme'] = request.preferences.get_value('theme')
     kwargs['method'] = request.preferences.get_value('method')
@@ -632,6 +634,10 @@ def index():
         # fmt: on
     )
 
+@app.route('/sw.js', methods=['GET'])
+def sw():
+    return Response(render('sw.js'),  mimetype='text/javascript')
+    
 
 @app.route('/healthz', methods=['GET'])
 def health():

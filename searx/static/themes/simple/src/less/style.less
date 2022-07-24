@@ -104,6 +104,10 @@ footer {
   }
 }
 
+br.mobile_only {
+  display: none;
+}
+
 .page_with_header .logo {
   height: 40px;
 }
@@ -904,6 +908,14 @@ article[data-vim-selected].category-social {
 
   html {
     background-color: var(--color-base-background-mobile);
+  }
+
+  footer {
+    min-height: 7.5rem;
+  }
+
+  br.mobile_only {
+    display: block;
   }
 
   #main_results div#results {

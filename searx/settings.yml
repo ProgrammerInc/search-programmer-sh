@@ -2,14 +2,14 @@ general:
   # Debug mode, only for development
   debug: false
   # displayed name
-  instance_name: "SearXNG"
+  instance_name: "<programmer>._"
   # For example: https://example.com/privacy
   privacypolicy_url: false
   # use true to use your own donation page written in searx/info/en/donate.md
   # use false to disable the donation link
   donation_url: https://docs.searxng.org/donate.html
   # mailto:contact@example.com
-  contact_url: false
+  contact_url: "https://programmer.inc"
   # record stats
   enable_metrics: true
 
@@ -22,11 +22,11 @@ brand:
 
 search:
   # Filter results. 0: None, 1: Moderate, 2: Strict
-  safe_search: 0
+  safe_search: 2
   # Existing autocomplete backends: "dbpedia", "duckduckgo", "google",
   # "seznam", "startpage", "swisscows", "qwant", "wikipedia" - leave blank to turn it off
   # by default.
-  autocomplete: ""
+  autocomplete: "duckduckgo"
   # minimun characters to type before autocompleter starts
   autocomplete_min: 4
   # Default search language - leave blank to detect from browser information or
@@ -63,12 +63,12 @@ server:
 
   secret_key: "ultrasecretkey"  # change this!
   # Proxying image results through searx
-  image_proxy: false
+  image_proxy: true
   # 1.0 and 1.1 are supported
   http_protocol_version: "1.0"
   # POST queries are more secure as they don't show up in history but may cause
   # problems when using Firefox containers
-  method: "POST"
+  method: "GET"
   default_http_headers:
     X-Content-Type-Options: nosniff
     X-XSS-Protection: 1; mode=block
@@ -78,21 +78,24 @@ server:
 
 redis:
   # https://redis-py.readthedocs.io/en/stable/connections.html#redis.client.Redis.from_url
-  url: unix:///usr/local/searxng-redis/run/redis.sock?db=0
+  url: redis://redis:6379/0
 
 ui:
   # Custom static path - leave it blank if you didn't change
   static_path: ""
-  static_use_hash: false
+  static_use_hash: true
   # Custom templates path - leave it blank if you didn't change
   templates_path: ""
+  # offline_browsing: When true, the search results and other pages are cached for offline viewing.
+  # This improves performance at the cost of privacy because the results are cached in the user's browser.
+  offline_browsing: false
   # query_in_title: When true, the result page's titles contains the query
   # it decreases the privacy, since the browser can records the page titles.
-  query_in_title: false
+  query_in_title: true
   # ui theme
   default_theme: simple
   # center the results ?
-  center_aligment: false
+  center_aligment: true
   # Default interface locale - leave blank to detect from browser information or
   # use codes from the 'locales' config section
   default_locale: ""
@@ -111,6 +114,7 @@ ui:
 #     - autocomplete
 #     - method
 #     - query_in_title
+#     - offline_browsing
 
 # searx supports result proxification using an external service:
 # https://github.com/asciimoo/morty uncomment below section if you have running
@@ -249,13 +253,14 @@ checker:
 categories_as_tabs:
   general:
   code:
+  q&a:
+  packages:
   science:
   news:
   images:
   videos:
   music:
   files:
-  map:
   social media:
 
 engines:
@@ -489,7 +494,7 @@ engines:
   - name: docker hub
     engine: docker_hub
     shortcut: dh
-    categories: [code, packages]
+    categories: [packages]
 
   - name: erowid
     engine: xpath
@@ -804,7 +809,7 @@ engines:
     url_xpath: './/div[@class="ans"]//a/@href'
     content_xpath: './/div[@class="from"]'
     page_size: 20
-    categories: [code, packages]
+    categories: [packages]
     disabled: false
     shortcut: ho
     about:
@@ -960,7 +965,7 @@ engines:
     title_query: package/name
     content_query: package/description
     page_size: 25
-    categories: [code, packages]
+    categories: [packages]
     disabled: false
     timeout: 5.0
     shortcut: npm
@@ -1069,7 +1074,7 @@ engines:
     url_query: url
     title_query: name
     content_query: description
-    categories: [code, packages]
+    categories: [packages]
     disabled: false
     timeout: 5.0
     shortcut: pack
@@ -1118,7 +1123,7 @@ engines:
     url_xpath: ./div/h3/a/@href
     title_xpath: ./div/h3/a
     content_xpath: ./p[@class="packages-description"]
-    categories: [code, packages]
+    categories: [packages]
     timeout: 3.0
     disabled: false
     first_page_num: 1
@@ -1146,7 +1151,7 @@ engines:
     content_xpath: ./p
     suggestion_xpath: /html/body/main/div/div/div/form/div/div[@class="callout-block"]/p/span/a[@class="link"]
     first_page_num: 1
-    categories: [code, packages]
+    categories: [packages]
     about:
       website: https://pypi.org
       wikidata_id: Q2984686
@@ -1240,19 +1245,19 @@ engines:
     engine: stackexchange
     shortcut: st
     api_site: 'stackoverflow'
-    categories: [code, q&a]
+    categories: [q&a]
 
   - name: askubuntu
     engine: stackexchange
     shortcut: ubuntu
     api_site: 'askubuntu'
-    categories: [code, q&a]
+    categories: [q&a]
 
   - name: superuser
     engine: stackexchange
     shortcut: su
     api_site: 'superuser'
-    categories: [code, q&a]
+    categories: [q&a]
 
   - name: searchcode code
     engine: searchcode_code
@@ -1649,7 +1654,7 @@ engines:
     content_xpath: ./span/p
     suggestion_xpath: /html/body/main/div/div[@class="search__suggestions"]/p/a
     first_page_num: 1
-    categories: [code, packages]
+    categories: [packages]
     disabled: false
     about:
       website: https://rubygems.org/

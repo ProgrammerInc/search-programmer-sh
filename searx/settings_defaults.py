@@ -22,13 +22,14 @@ SIMPLE_STYLE = ('auto', 'light', 'dark')
 CATEGORIES_AS_TABS = {
     'general': {},
     'code': {},
+    'q&a': {},
+    'packages': {},
     'science': {},
     'news': {},
     'images': {},
     'videos': {},
     'music': {},
     'files': {},
-    'map': {},
     'social media': {},
 }
 STR_TO_BOOL = {
@@ -189,6 +190,7 @@ SCHEMA = {
         'results_on_new_tab': SettingsValue(bool, False),
         'advanced_search': SettingsValue(bool, False),
         'query_in_title': SettingsValue(bool, False),
+        'offline_browsing': SettingsValue(bool, False),
         'infinite_scroll': SettingsValue(bool, False),
     },
     'preferences': {

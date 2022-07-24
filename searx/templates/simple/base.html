@@ -2,7 +2,7 @@
 <html class="no-js theme-{{ preferences.get_value('simple_style') or 'auto' }} center-aligment-{{ preferences.get_value('center_aligment') and 'yes' or 'no' }}" lang="{{ locale_rfc5646 }}" {% if rtl %} dir="rtl"{% endif %}>
 <head>
   <meta charset="UTF-8" />
-  <meta name="description" content="&ltprogrammer&gt._ — a privacy-respecting, metasearch engine for software developers">
+  <meta name="description" content="&lt;programmer&gt;._ — a privacy-respecting, metasearch engine for software developers">
   <meta name="keywords" content="programmer, programming, code, coding, dev, developers, development, software development, search, search engine, metasearch, meta search">
   <meta name="generator" content="searxng/{{ searx_version }}">
   <meta name="referrer" content="no-referrer">
@@ -24,10 +24,32 @@
   {% block head %}
   <link title="{{ instance_name }}" type="application/opensearchdescription+xml" rel="search" href="{{ opensearch_url }}"/>
   {% endblock %}
-  <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" sizes="any" media="(prefers-color-scheme:no-preference)">
-  <link rel="icon" href="{{ url_for('static', filename='img/favicon-dark.png') }}" sizes="any" media="(prefers-color-scheme:dark)">
-  <link rel="icon" href="{{ url_for('static', filename='img/favicon.png') }}" sizes="any" media="(prefers-color-scheme:light)">
-  <!-- <link rel="icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/svg+xml"> -->
+
+  <!-- Icons - Color Scheme: No Preference -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/apple-touch-icon.png') }}" media="(prefers-color-scheme:no-preference)">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon-32x32.png') }}" media="(prefers-color-scheme:no-preference)">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon-16x16.png') }}" media="(prefers-color-scheme:no-preference)">
+  <link rel="mask-icon" href="{{ url_for('static', filename='icons/safari-pinned-tab.svg') }}" color="#2a2a31" media="(prefers-color-scheme:no-preference)">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" media="(prefers-color-scheme:no-preference)">
+
+  <!-- Icons - Color Scheme: Dark -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/apple-touch-icon-dark.png') }}" media="(prefers-color-scheme:dark)">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon-32x32-dark.png') }}" media="(prefers-color-scheme:dark)">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon-16x16-dark.png') }}" media="(prefers-color-scheme:dark)">
+  <link rel="mask-icon" href="{{ url_for('static', filename='icons/safari-pinned-tab-dark.svg') }}" color="#2a2a31" media="(prefers-color-scheme:dark)">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='icons/favicon-dark.ico') }}" media="(prefers-color-scheme:dark)">
+
+  <!-- Icons - Color Scheme: Light -->
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/apple-touch-icon.png') }}" media="(prefers-color-scheme:light)">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/favicon-32x32.png') }}" media="(prefers-color-scheme:light)">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/favicon-16x16.png') }}" media="(prefers-color-scheme:light)">
+  <link rel="mask-icon" href="{{ url_for('static', filename='icons/safari-pinned-tab.svg') }}" color="#2a2a31" media="(prefers-color-scheme:light)">
+  <link rel="shortcut icon" href="{{ url_for('static', filename='icons/favicon.ico') }}" media="(prefers-color-scheme:light)">
+
+  <link rel="manifest" href="{{ url_for('static', filename='icons/site.webmanifest') }}">
+  <meta name="msapplication-TileColor" content="#2a2a31">
+  <meta name="msapplication-config" content="{{ url_for('static', filename='icons/browserconfig.xml') }}">
+  <meta name="theme-color" content="#2a2a31">
 </head>
 <body class="{{ endpoint }}_endpoint" >
   <main id="main_{{  self._TemplateReference__context.name|replace("simple/", "")|replace(".html", "") }}" class="{{body_class}}">
@@ -63,7 +85,7 @@
   </main>
   <footer>
     <p>
-    {{ _('Powered by') }} <a href="{{ url_for('info', pagename='about') }}">SearXNG</a> - {{ searx_version }} — {{ _('a privacy-respecting, hackable metasearch engine') }}<br/>
+    {{ _('Powered by') }} <a href="{{ url_for('info', pagename='about') }}">SearXNG</a> - 0.0.7-alpha — {{ _('a privacy-respecting, hackable metasearch engine') }}<br/>
         <a href="https://github.com/ProgrammerInc/search-programmer-sh">{{ _('Source code') }}</a> |
         <a href="{{ get_setting('brand.issue_url') }}">{{ _('Issue tracker') }}</a> |
         <a href="{{ url_for('stats') }}">{{ _('Engine stats') }}</a> |
@@ -74,6 +96,7 @@
         {% if get_setting('general.contact_url') %}
         | <a href="{{ get_setting('general.contact_url') }}">{{ _('Contact instance maintainer') }}</a>
         {% endif %}
+        <br/>Hosting by <a href="https://programmer.to/linode" target="_blank" alt="Try Linode Link">Linode</a> - Support Our Server Addiction &#129299; <br class="mobile_only"/><a href="https://programmer.to/linode" target="_blank" alt="Try Linode Link">Try Linode Free with $100 Credit</a>
     </p>
   </footer>
   <!--[if gte IE 9]>-->

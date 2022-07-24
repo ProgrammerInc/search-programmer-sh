@@ -397,6 +397,17 @@ class Preferences:
                     'False': False
                 }
             ),
+            'offline_browsing': MapSetting(
+                settings['ui']['offline_browsing'],
+                locked=is_locked('offline_browsing'),
+                map={
+                    '': settings['ui']['offline_browsing'],
+                    '0': False,
+                    '1': True,
+                    'True': True,
+                    'False': False
+                }
+            ),
             'infinite_scroll': MapSetting(
                 settings['ui']['infinite_scroll'],
                 locked=is_locked('infinite_scroll'),

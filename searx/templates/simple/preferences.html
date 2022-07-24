@@ -288,6 +288,18 @@
       <div class="description">{{ _("When enabled, the result page's title contains your query. Your browser can record this title") }}</div>
     </fieldset>
     {% endif %}
+    {% if 'offline_browsing' not in locked_preferences %}
+    <fieldset>
+      <legend id="pref_offline_browsing">{{ _("Offline browsing") }}</legend>
+      <p class="value">
+        <select name='offline_browsing' aria-labelledby="pref_offline_browsing">
+          <option value="1" {% if offline_browsing %}selected="selected"{% endif %}>{{ _('Enabled') }}</option>
+          <option value="" {% if not offline_browsing %}selected="selected"{% endif %}>{{ _('Disabled') }}</option>
+        </select>
+      </p>
+      <div class="description">{{ _("When enabled, the search results and other pages are cached for offline viewing. This improves performance at the cost of privacy") }}</div>
+    </fieldset>
+    {% endif %}
     {{ plugin_preferences('privacy') }}
   {{ tab_footer() }}
 
@@ -430,7 +442,7 @@
     {{ _("These cookies serve your sole convenience, we don't use these cookies to track you.") }}
   </p>
 
-  <input type="submit" value="{{ _('Save') }}" />
+  <input type="submit" onclick="" value="{{ _('Save') }}" />
   <div class="{% if rtl %}left{% else %}right{% endif %} preferences_back"><a href="{{ url_for('clear_cookies') }}">{{ _('Reset defaults') }}</a></div>
   <div class="{% if rtl %}left{% else %}right{% endif %} preferences_back"><a href="{{ url_for('index') }}">{{ _('Back') }}</a></div>
 

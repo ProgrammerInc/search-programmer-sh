@@ -230,6 +230,7 @@ Global Settings
    ui:
      default_locale: ""
      query_in_title: false
+     offline_browsing: false
      default_theme: simple
      theme_args:
        simple_style: auto
@@ -249,6 +250,10 @@ Global Settings
 ``query_in_title`` :
   When true, the result page's titles contains the query it decreases the
   privacy, since the browser can records the page titles.
+
+``offline_browsing`` :
+  When true, the result page's titles contains the query it decreases the privacy,
+  since the browser can records the page titles.
 
 ``results_on_new_tab``:
   Open result links in a new tab by default.
