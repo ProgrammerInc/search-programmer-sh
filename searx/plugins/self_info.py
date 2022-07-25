@@ -39,7 +39,7 @@ def post_search(request, search):
             ip = x_forwarded_for[0].split(',')[0]
         else:
             ip = request.remote_addr
-        answer = "\n" + gettext('IP address') + ": " + ip
+        answer = gettext('IP address') + ": " + ip
         search.result_container.answers['ip'] = {'answer': answer}
     elif p.match(search.search_query.query):
         ua = request.user_agent

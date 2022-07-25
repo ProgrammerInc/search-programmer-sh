@@ -17,18 +17,19 @@ along with searx. If not, see < http://www.gnu.org/licenses/ >.
 (C) 2022 by Programmer Inc.
 '''
 
+from ipaddress import ip_address
 from flask_babel import gettext
 import socket
 import re
 
 name = "Hostname plugin"
-description = gettext("Displays the hostname for a given IP address.")
+description = gettext("Displays the hostname for a given IP address or IP address for a given hostname.")
 default_on = True
 preference_section = 'query'
-query_keywords = ['hostname', 'ip2hostname']
+query_keywords = ['hostname', 'hostname2ip', 'ip', 'ip2hostname']
 query_examples = 'hostname 8.8.8.8'
 
-parser_re = re.compile('(hostname|ip2hostname) (.*)', re.I)
+parser_re = re.compile('(hostname|hostname2ip|ip|ip2hostname) (.*)', re.I)
 
 def post_search(request, search):
     # process only on first page
@@ -46,11 +47,17 @@ def post_search(request, search):
 
     answer = ''
 
-    # convert hex to rgb
-    # Source: https://www.30secondsofcode.org/python/s/hex-to-rgb
+    # get hostname by IP address
+    # Source: https://www.simplified.guide/python/ip-to-hostname
     if function == 'hostname' or function == 'ip2hostname':
         hostname = socket.gethostbyaddr(string)[0]
-        answer = "\n" + gettext('Hostname') + ": " + hostname
+        answer = gettext('Hostname') + ": " + hostname
+
+    # get IP address by hostname
+    # Source: https://www.simplified.guide/python/hostname-to-ip
+    if function == 'ip' or function == 'hostname2ip':
+        ip_address = socket.gethostbyname(string)
+        answer = gettext('IP Address') + ": " + ip_address
 
     # print result
     search.result_container.answers.clear()
